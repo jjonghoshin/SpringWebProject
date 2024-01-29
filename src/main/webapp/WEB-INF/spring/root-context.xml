@@ -13,13 +13,12 @@
         <property name="password" value="12345"/>
     </bean>
 
-    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
-          destroy-method="close">
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
         <constructor-arg ref="hikariConfig"/>
     </bean>
 
 
-    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean"> <!--SqlSessionFactoryBean이 interface의 구현체-->
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mybatis-config/mapper/BookMapper.xml"/>
     </bean>

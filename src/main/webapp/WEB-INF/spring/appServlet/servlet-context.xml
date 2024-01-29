@@ -21,5 +21,6 @@
     </beans:bean>
 
     <context:component-scan base-package="com.example.controller"/>
+    <context:component-scan base-package="com.example.service"/>
 
 </beans:beans>

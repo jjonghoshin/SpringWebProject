@@ -24,4 +24,16 @@
     <delete id="bookDelete" parameterType="int">
         delete from booktbl where num=#{num}
     </delete>
+    
+    <select id="getByNum" resultType="com.example.entity.BookDTO" parameterType="int">
+        select*from booktbl
+        where num = #{num}
+    </select>
+
+    <update id="bookUpdate" parameterType="com.example.entity.BookDTO">
+        update booktbl
+        set title=#{title}, price=#{price},  name=#{name}, page=#{page}
+        where num=#{num}
+    </update>
+
 </mapper>

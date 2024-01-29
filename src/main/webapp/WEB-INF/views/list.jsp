@@ -13,9 +13,9 @@
     function goList(){ // javascript, jQuery
         // 서버와 직접 통신
         $.ajax({
-              url : "/shopping03/ajaxList.do", // pojo
+              url : "/shopping03/ajaxList", //POJO /shopping03/-> get,post,put,delete 등등
               type : "get",
-              dataType : "json",
+              dataType : "json", //JSON Object
               success : bookList,
               error : function(){  alert("error");  }
            });
@@ -57,7 +57,7 @@
     }
     function goDel(num){
           // 삭제요청, URL돌려서요청, ajax요청
-         location.href="/shopping03/delete.do?num="+num; // GET방식 요청
+         location.href="/shopping03/delete/"+num; // GET방식 요청
     }
 </script>
 </head>
@@ -68,7 +68,7 @@
         <div class="card">
             <div class="card-header">
              <c:if test="${empty uservo}">
-                <form class="form-inline" action="/shopping03/login.do" method="post">
+                <form class="form-inline" action="/shopping03/login" method="post">
                   <label for="text">아이디:</label>
                   <input type="text" class="form-control" placeholder="Enter 아이디" id="username" name="username">
                   <label for="pwd">패스워드:</label>
@@ -105,24 +105,22 @@
                       <c:forEach var="book" items="${list}">
                               <tr>
                                 <td>${book.num}</td>
-                                <td>${book.title}</td>
+                                <td><a href="/shopping03/view/${book.num}">${book.title}</a></td>
                                 <td>${book.price}</td>
                                  <td>${book.name}</td>
                                  <td>${book.page}</td>
-                                 <c:if test="${!empty uservo}">
                                   <td><button type="button" class="btn btn-sm btn-danger" onclick="goDel(${book.num})">삭제</button></td>
-                                 </c:if>
                              </tr>
                        </c:forEach>
                      </tbody>
                 </table>
-                <button class="btn btn-secondary btn-sm" onclick="location.href='/shopping03/register.do'">책 등록</button>
+                <button class="btn btn-secondary btn-sm" onclick="location.href='/shopping03/register'">책 등록</button>
                 <button class="btn btn-secondary btn-sm" onclick="goList()">BookList</button>
             </div>
             <div id="list" class="container" style="display:none">
                 여기에 책 리스트 출력
             </div>
-            <div class="card-footer">패스트캠퍼스_BE7_박매일</div>
+            <div class="card-footer">패스트캠퍼스_BE7_신종호</div>
         </div>
     </div>
 
